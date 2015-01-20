@@ -79,6 +79,21 @@ exports.formatters.o = function(v) {
     .replace(/\s*\n\s*/g, ' ');
 };
 
+var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+              'Oct', 'Nov', 'Dec'];
+
+function pad(n) {
+  return n < 10 ? '0' + n.toString(10) : n.toString(10);
+}
+
+function timestamp() {
+  var d = new Date();
+  var time = [pad(d.getHours()),
+              pad(d.getMinutes()),
+              pad(d.getSeconds())].join(':');
+  return [d.getDate(), months[d.getMonth()], time].join(' ');
+}
+
 /**
  * Adds ANSI color escape codes if enabled.
  *
@@ -98,7 +113,7 @@ function formatArgs() {
       + args[0] + '\u001b[3' + c + 'm'
       + ' +' + exports.humanize(this.diff) + '\u001b[0m';
   } else {
-    args[0] = new Date().toUTCString()
+    args[0] = timestamp()
       + ' ' + name + ' ' + args[0];
   }
   return args;
