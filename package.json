@@ -1,9 +1,9 @@
 {
-  "name": "debug",
+  "name": "@sbks/debug",
   "version": "2.1.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/debug.git"
+    "url": "git://github.com/wision/debug.git"
   },
   "description": "small debugging utility",
   "keywords": [
